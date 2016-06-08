@@ -5,7 +5,7 @@
 ## Spis treści
 
   1. [Podstawowe zasady](#basic-rules)
-  1. [Class kontra `React.createClass` kontra stateless](#class-vs-reactcreateclass-vs-stateless)
+  1. [Class kontra `React.createClass` kontra bezklasowe](#class-vs-reactcreateclass-vs-stateless)
   1. [Nazewnictwo](#naming)
   1. [Deklaracje](#declaration)
   1. [Wyrównanie](#alignment)
@@ -27,7 +27,6 @@
 
 ## Class kontra `React.createClass` kontra bezstanowe
 
-  - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass` unless you have a very good reason to use mixins. eslint:
   - Jeżeli masz wewnętrzny stan i/albo odnośniki (refs), wtedy preferuj wykorzystanie `class extends React.Component` zamiast `React.createClass`, chyba że posiadasz dobry powód żeby użyć wstawek (mixins). eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
 
     ```jsx
@@ -531,5 +530,7 @@
   Ten podręcznik do JSX/React jest także w innych językach:
 
   - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chiński (Uproszczony)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
+  - ![en](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/United-Kingdom.png) **Angielski**: [airbnb/javascript](https://github.com/airbnb/javascript/tree/master/react) 
+  
 
-**[⬆ powrót na górę#table-of-contents)**
+**[⬆ powrót na górę](#table-of-contents)**
