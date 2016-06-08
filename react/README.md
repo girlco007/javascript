@@ -1,36 +1,37 @@
-# Airbnb React/JSX Style Guide
+# Podręcznik Airbnb dla React/JSX
 
-*A mostly reasonable approach to React and JSX*
+*Przeważnie rozsądne podejście do React i JSX*
 
-## Table of Contents
+## Spis treści
 
-  1. [Basic Rules](#basic-rules)
+  1. [Podstawowe zasady](#basic-rules)
   1. [Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
-  1. [Naming](#naming)
-  1. [Declaration](#declaration)
-  1. [Alignment](#alignment)
-  1. [Quotes](#quotes)
-  1. [Spacing](#spacing)
-  1. [Props](#props)
-  1. [Parentheses](#parentheses)
-  1. [Tags](#tags)
-  1. [Methods](#methods)
-  1. [Ordering](#ordering)
+  1. [Nazewnictwo](#naming)
+  1. [Deklaracje](#declaration)
+  1. [Wyrównanie](#alignment)
+  1. [Cudzysłowy](#quotes)
+  1. [Spacjonowanie](#spacing)
+  1. [Właściwości - Props](#props)
+  1. [Nawiasy](#parentheses)
+  1. [Tagi](#tags)
+  1. [Metody](#methods)
+  1. [Porządkowanie](#ordering)
   1. [`isMounted`](#ismounted)
 
-## Basic Rules
+## Podstawowe zasady
 
-  - Only include one React component per file.
-    - However, multiple [Stateless, or Pure, Components](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions) are allowed per file. eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
-  - Always use JSX syntax.
-  - Do not use `React.createElement` unless you're initializing the app from a file that is not JSX.
+  Plik powinien zawierć tylko jeden komponent.
+    - Jednak dopuszcza się wielkrotne w przypadku [komponentów bezstanowych lub czystych, ](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions). eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
+  - Zawsze używaj skaładni JSX.
+  - Nie używaj `React.createElement`, chyba że inicjujesz aplikację z pliku, który nie jest JSX.
 
-## Class vs `React.createClass` vs stateless
+## Class kontra `React.createClass` kontra bezstanowe
 
-  - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass` unless you have a very good reason to use mixins. eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
+  - If you have internal state and/or refs, prefer `class extends React.Component` over `React.createClass` unless you have a very good reason to use mixins. eslint:
+  - Jeżeli masz wewnętrzny stan i/albo odnośniki (refs), wtedy preferuj wykorzystanie `class extends React.Component` zamiast `React.createClass`, chyba że posiadasz dobry powód żeby użyć wstawek (mixins). eslint: [`react/prefer-es6-class`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md) [`react/prefer-stateless-function`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-stateless-function.md)
 
     ```jsx
-    // bad
+    // źle
     const Listing = React.createClass({
       // ...
       render() {
@@ -38,7 +39,7 @@
       }
     });
 
-    // good
+    // dobrze
     class Listing extends React.Component {
       // ...
       render() {
@@ -47,28 +48,28 @@
     }
     ```
 
-    And if you don't have state or refs, prefer normal functions (not arrow functions) over classes:
+    Jeśli nie masz stanu (state) lub odwołań (refs), wtedy zamiast klas wybierz normalną funkcję (funkcję anonimową ):
 
     ```jsx
-    // bad
+    // źle
     class Listing extends React.Component {
       render() {
         return <div>{this.props.hello}</div>;
       }
     }
 
-    // bad (relying on function name inference is discouraged)
+    // źle (poleganie na inferencji (wnioskowania?) nazwy funkcji jest odradzane )
     const Listing = ({ hello }) => (
       <div>{hello}</div>
     );
 
-    // good
+    // dobrze
     function Listing({ hello }) {
       return <div>{hello}</div>;
     }
     ```
 
-## Naming
+## Nazewnictwo
 
   - **Extensions**: Use `.jsx` extension for React components.
   - **Filename**: Use PascalCase for filenames. E.g., `ReservationCard.jsx`.
@@ -101,7 +102,7 @@
     import Footer from './Footer';
     ```
 
-## Declaration
+## Deklaracje
 
   - Do not use `displayName` for naming components. Instead, name the component by reference.
 
@@ -117,7 +118,7 @@
     }
     ```
 
-## Alignment
+## Wyrównanie
 
   - Follow these alignment styles for JSX syntax. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
 
@@ -144,7 +145,7 @@
     </Foo>
     ```
 
-## Quotes
+## Cudzysłowy
 
   - Always use double quotes (`"`) for JSX attributes, but single quotes for all other JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
 
@@ -165,7 +166,7 @@
     <Foo style={{ left: '20px' }} />
     ```
 
-## Spacing
+## Spacjonowanie
 
   - Always include a single space in your self-closing tag.
 
@@ -194,7 +195,7 @@
     <Foo bar={baz} />
     ```
 
-## Props
+## Właściwości - Props
 
   - Always use camelCase for prop names.
 
@@ -299,7 +300,7 @@
   )}
   ```
 
-## Parentheses
+## Nawiasy
 
   - Wrap JSX tags in parentheses when they span more than one line. eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
 
@@ -327,7 +328,7 @@
     }
     ```
 
-## Tags
+## Tagi
 
   - Always self-close tags that have no children. eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
 
@@ -354,7 +355,7 @@
     />
     ```
 
-## Methods
+## Metody
 
   - Use arrow functions to close over local variables.
 
@@ -443,7 +444,7 @@
     }
     ```
 
-## Ordering
+## Porządkowanie
 
   - Ordering for `class extends React.Component`:
 
@@ -525,10 +526,10 @@
 
   [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
 
-## Translation
+## Tłumaczenia
 
-  This JSX/React style guide is also available in other languages:
+  Ten podręcznik do JSX/React jest także w innych językach:
 
-  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chinese (Simplified)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
+  - ![cn](https://raw.githubusercontent.com/gosquared/flags/master/flags/flags/shiny/24/China.png) **Chiński (Uproszczony)**: [JasonBoy/javascript](https://github.com/JasonBoy/javascript/tree/master/react)
 
-**[⬆ back to top](#table-of-contents)**
+**[⬆ powrót na górę#table-of-contents)**
