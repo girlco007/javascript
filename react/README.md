@@ -5,7 +5,7 @@
 ## Spis treści
 
   1. [Podstawowe zasady](#basic-rules)
-  1. [Class vs `React.createClass` vs stateless](#class-vs-reactcreateclass-vs-stateless)
+  1. [Class kontra `React.createClass` kontra stateless](#class-vs-reactcreateclass-vs-stateless)
   1. [Nazewnictwo](#naming)
   1. [Deklaracje](#declaration)
   1. [Wyrównanie](#alignment)
@@ -58,7 +58,7 @@
       }
     }
 
-    // źle (poleganie na inferencji (wnioskowania?) nazwy funkcji jest odradzane )
+    // źle (poleganie na inferencji (wnioskowaniu?) nazwy funkcji jest odradzane )
     const Listing = ({ hello }) => (
       <div>{hello}</div>
     );
