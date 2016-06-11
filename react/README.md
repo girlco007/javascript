@@ -21,7 +21,7 @@
 ## Podstawowe zasady
 
   Plik powinien zawierć tylko jeden komponent.
-    - Jednak dopuszcza się liczne komponenty w pojedynczym pliku gdy są [komponentami bezstanowymi lub czystymi, ](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions). eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
+  - Jednak dopuszcza się liczne komponenty w pojedynczym pliku gdy są [komponentami bezstanowymi lub czystymi, ](https://facebook.github.io/react/docs/reusable-components.html#stateless-functions). eslint: [`react/no-multi-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-multi-comp.md#ignorestateless).
   - Zawsze używaj skaładni JSX.
   - Nie używaj `React.createElement`, chyba że inicjujesz aplikację z pliku, który nie jest JSX.
 
@@ -109,7 +109,7 @@
     // źle
     export default React.createClass({
       displayName: 'ReservationCard',
-      // stuff goes here
+      // kod
     });
 
     // dobrze
@@ -147,8 +147,8 @@
 
   - Zawsze używaj podwójnych cudzysłowów (`"`) dla atrybutów JSX i apostrofów (`'`) dla pozostałego kodu JS. eslint: [`jsx-quotes`](http://eslint.org/docs/rules/jsx-quotes)
 
-  > Why? JSX attributes [can't contain escaped quotes](http://eslint.org/docs/rules/jsx-quotes), so double quotes make conjunctions like `"don't"` easier to type.
-  > Regular HTML attributes also typically use double quotes instead of single, so JSX attributes mirror this convention.
+  > Dlaczego? Atrybuty JSX [nie mogą zawierać znaku modyfikacji przed apostrofami](http://eslint.org/docs/rules/jsx-quotes), węc cudzysłowy sprawiają że pisownia wyrazów takich `"don't"` jest łatwiesza w zapisie.
+  > Typowe atrybuty HTML także używają cudzysłowów zamiast apostofów, więc atrybuty JSX odzwierciedlają niniejszą konwencję.
 
     ```jsx
     // źle
@@ -243,7 +243,7 @@
 
   - Nie używaj słów takich jak: "obraz" albo "fotografia" we właściwościach `<img>` i `alt`. eslint: [`jsx-a11y/img-redundant-alt`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/img-redundant-alt.md)
 
-  > Why? Screenreaders already announce `img` elements as images, so there is no need to include this information in the alt text.
+  > Dlaczego? Czytniki ekranu ogłoszają już elementy ` img` jako obrazy, więc nie ma potrzeby, aby umieszczać tę informację w tekście alt.
 
     ```jsx
     // źle
@@ -268,7 +268,7 @@
 
   - Nie używaj `accessKey` na elementach. eslint: [`jsx-a11y/no-access-key`](https://github.com/evcohen/eslint-plugin-jsx-a11y/blob/master/docs/rules/no-access-key.md)
 
-  > Why? Inconsistencies between keyboard shortcuts and keyboard commands used by people using screenreaders and keyboards complicate accessibility.
+  > Dlaczego? Niespójność pomiędzy skrótami klawiszowymi a komendami klawiszowymi wykorzystywanymi przez ludzi używających czytniki ekranu i klawiatury komplikuje dostępność.
 
   ```jsx
   // źle
@@ -278,10 +278,10 @@
   <div />
   ```
 
-  - Avoid using an array index as `key` prop, prefer a unique ID. ([why?](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318))
+  - Unikaj używania indeksu tablicy jako klucza (`key`) właściwości, preferuj używanie unikalnego identyficatora (ID). ([dlaczego?](https://medium.com/@robinpokorny/index-as-a-key-is-an-anti-pattern-e0349aece318))
 
   ```jsx
-  // bad
+  // źle
   {todos.map((todo, index) =>
     <Todo
       {...todo}
@@ -289,7 +289,7 @@
     />
   )}
 
-  // good
+  // dobrze
   {todos.map((todo) =>
     <Todo
       {...todo}
@@ -300,17 +300,17 @@
 
 ## Nawiasy
 
-  - Wrap JSX tags in parentheses when they span more than one line. eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
+  - W przypadku gdy tagów JSX jest więcej niż jeden, wtedy umieść je wewnątrz nawiasów (okrągłych). eslint: [`react/wrap-multilines`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/wrap-multilines.md)
 
     ```jsx
-    // bad
+    // źle
     render() {
       return <MyComponent className="long body" foo="bar">
                <MyChild />
              </MyComponent>;
     }
 
-    // good
+    // dobrze
     render() {
       return (
         <MyComponent className="long body" foo="bar">
@@ -319,7 +319,7 @@
       );
     }
 
-    // good, when single line
+    // dobrze, w przypadku jednej lini
     render() {
       const body = <div>hello</div>;
       return <MyComponent>{body}</MyComponent>;
@@ -328,25 +328,25 @@
 
 ## Znaczniki
 
-  - Always self-close tags that have no children. eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
+  - Zawsze używaj samo-zamykających sie tagów w przypadku gdy nie zawierają one żadnych elementów potomnych. eslint: [`react/self-closing-comp`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/self-closing-comp.md)
 
     ```jsx
-    // bad
+    // źle
     <Foo className="stuff"></Foo>
 
-    // good
+    // dobrze
     <Foo className="stuff" />
     ```
 
-  - If your component has multi-line properties, close its tag on a new line. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
+  - W przypadku gdy twój komponent ma właściwości na wielu liniach, wtedy umieść zamknięcie tagu na osobnej lini. eslint: [`react/jsx-closing-bracket-location`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-closing-bracket-location.md)
 
     ```jsx
-    // bad
+    // źle
     <Foo
       bar="bar"
       baz="baz" />
 
-    // good
+    // dobrze
     <Foo
       bar="bar"
       baz="baz"
@@ -355,7 +355,7 @@
 
 ## Metody
 
-  - Use arrow functions to close over local variables.
+  - Używaj anonimowych funkcji żeby lokalne zmienne zakmnąć wewnątrz zasięgu.
 
     ```jsx
     function ItemList(props) {
@@ -372,15 +372,15 @@
     }
     ```
 
-  - Bind event handlers for the render method in the constructor. eslint: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
+  - Powiąrz obsługę zdarzeń dla metody renderowania w konstruktorze. eslint: [`react/jsx-no-bind`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-bind.md)
 
-  > Why? A bind call in the render path creates a brand new function on every single render.
+  > Dlaczego? Przywołanie metody łaczenia w ścieżce renderowania tworzy nową funkcję dla każdego renderowania.
 
     ```jsx
-    // bad
+    // źle
     class extends React.Component {
       onClickDiv() {
-        // do stuff
+        // zrób coś
       }
 
       render() {
@@ -388,7 +388,7 @@
       }
     }
 
-    // good
+    // dobrze
     class extends React.Component {
       constructor(props) {
         super(props);
@@ -397,7 +397,7 @@
       }
 
       onClickDiv() {
-        // do stuff
+        // zrób coś
       }
 
       render() {
@@ -406,7 +406,7 @@
     }
     ```
 
-  - Do not use underscore prefix for internal methods of a React component.
+  - Nie używaj podkreśleń do oznaczenia wewnętrznych metod komponentów React.
 
     ```jsx
     // źle
@@ -461,7 +461,7 @@
   1. *Opcjonalne metody renderowania* tak `renderNavigation()` albo `renderProfilePicture()`
   1. `render`
 
-  - Jak definiować `propTypes`, `defaultProps`, `contextTypes`, etc...
+  - Jak definiować `propTypes`, `defaultProps`, `contextTypes`, itp.
 
     ```jsx
     import React, { PropTypes } from 'react';
@@ -512,17 +512,17 @@
   1. `componentDidUpdate`
   1. `componentWillUnmount`
   1. *clickHandlers albo eventHandlers* tak `onClickSubmit()` albo `onChangeDescription()`
-  1. *metody `get` dla `render`* like `getSelectReason()` or `getFooterContent()`
-  1. *Opcjonalne metdoy renderowania* like `renderNavigation()` or `renderProfilePicture()`
+  1. *metody `get` dla `render`* like `getSelectReason()` albo `getFooterContent()`
+  1. *Opcjonalne metdoy renderowania* like `renderNavigation()` albo `renderProfilePicture()`
   1. `render`
 
 ## `isMounted`
 
   - Nie używaj `isMounted`. eslint: [`react/no-is-mounted`](https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/no-is-mounted.md)
 
-  > Why? [`isMounted` is an anti-pattern][anti-pattern], is not available when using ES6 classes, and is on its way to being officially deprecated.
+  > Dlaczego? [`isMounted` jest antywzorcem][anti-pattern], nie jest dostępny gdy używane sa klasy ES6 i wkrótce zostanie oficijanie wycofany.
 
-  [anti-pattern]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
+  [antywzorzec]: https://facebook.github.io/react/blog/2015/12/16/ismounted-antipattern.html
 
 ## Tłumaczenia
 
