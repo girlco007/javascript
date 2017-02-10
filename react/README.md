@@ -195,7 +195,7 @@
 
 ## Właściwości - Props
 
-  - Zawsze używaj camelCase for nazw własciwości.
+  - Zawsze używaj camelCase dla nazw własciwości.
 
     ```jsx
     // źle
